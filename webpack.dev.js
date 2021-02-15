@@ -14,9 +14,15 @@ module.exports = {
                 test: '/\.js$/',
                 exclude: /node_modules/,
                 loader: "babel-loader"
-            }
+            },
+            {
+                "scripts": {
+                    "test": "jest"
+                }
+           }
         ]
     },
+    
     plugins: [
         new HtmlWebPackPlugin({
             template: "./src/client/views/index.html",
