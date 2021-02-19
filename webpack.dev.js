@@ -16,9 +16,13 @@ module.exports = {
                 loader: "babel-loader"
             },
             {
-                "scripts": {
-                    "test": "jest"
-                }
+                test: /\.scss$/,
+                use: [ 'style-loader', 'css-loader', 'sass-loader' ]
+        }
+            // {
+            //     "scripts": {
+            //         "test": "jest"
+            //     }
            }
         ]
     },
