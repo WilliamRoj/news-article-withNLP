@@ -1,3 +1,5 @@
+projectData = {};
+
 const dotenv = require('dotenv');
 dotenv.config();
 
@@ -5,10 +7,9 @@ dotenv.config();
 
 // You could call it aylienapi, or anything else
 var textapi = new aylien({
-    application_id: process.env.API_ID,
     application_key: process.env.API_KEY
  });
- 
+
 var path = require('path')
 const express = require('express')
 const mockAPIResponse = require('./mockAPI.js')
@@ -32,3 +33,24 @@ app.listen(8080, function () {
 app.get('/test', function (req, res) {
     res.send(mockAPIResponse)
 })
+
+
+app.get('/all', sendData);
+
+
+//   GET
+  function sendData(req, res){
+      res.send(projectData);
+  }
+
+
+  //post Route
+
+app.post('/add', data);
+    function data(req, res){
+      // console.log(res.body);
+        newEntry = {
+          name: req.body.name
+        }
+    projectData = newEntry;
+  }
