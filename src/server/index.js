@@ -54,3 +54,18 @@ app.post('/add', data);
         }
     projectData = newEntry;
   }
+
+  //   Get example
+
+ const getFeelings = async (baseURL, apiKey, urlInput, lang) =>{
+    //console.log(data);
+      const response = await fetch(baseURL+apiKey+urlInput+lang,) 
+       try {
+         const newData = await response.json();
+         console.log(newData);
+         return newData;
+       }catch(error) {
+       console.log("error", error);
+       // appropriately handle the error
+       }
+   }
