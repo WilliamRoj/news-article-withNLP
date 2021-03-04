@@ -1,6 +1,6 @@
 import { checkForName } from './js/nameChecker'
 import { handleSubmit } from './js/formHandler'
-export{handleSubmit}
+export{handleSubmit, checkForName}
 import './style/resets.scss'
 import './style/base.scss'
 import './style/footer.scss'
