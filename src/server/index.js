@@ -35,29 +35,24 @@ app.listen(8080, function () {
 app.get('/test', function (req, res) {
     res.send(mockAPIResponse)
 })
-
-
-app.get('/all', sendData);
-
-
-//   GET
-  function sendData(req, res){
-      res.send(projectData);
-  }
-
-
-  //post Route
-
-app.post('/add', data);
-    function data(req, res){
-      // console.log(res.body);
-        newEntry = {
-          name: req.body.name
-        }
-    projectData = newEntry;
-  }
-
+// ------------------------------//
   //   Get example
+const baseURL = '//https://api.meaningcloud.com/sentiment-2.1';
+const apiKey = '=388289462d0614388a47705b76b3114b';
+
+document.getElementById('generate').addEventListener('click', performAction);
+    
+function performAction(e){
+  const newCity =  document.getElementById('city').value;
+   getFeelings(baseURL, apiKey, urlInput, lang)
+    .then(function(data){
+        console.log(data);
+        postData('http://localhost:8080/add', {
+            name: req.body.name
+   }) .then(function() {
+    updateUI()
+  });
+};
 
  const getFeelings = async (baseURL, apiKey, urlInput, lang) =>{
     //console.log(data);
@@ -71,3 +66,19 @@ app.post('/add', data);
        // appropriately handle the error
        }
    }
+
+ 
+
+  // Update the UI
+  const updateUI = async () => {
+    const request = await fetch('http://localhost:8080/all');
+    try{
+      const allData = await request.json();
+      document.getElementById('results').innerHTML = `Date - ${allData.latitude}`;
+      document.getElementById('temp').innerHTML = `Temp - ${allData.longitude}`;
+      document.getElementById('content').innerHTML = `How i feel - ${allData.country}`;
+  
+    }catch(error){
+      console.log("error", error);
+    }
+  }

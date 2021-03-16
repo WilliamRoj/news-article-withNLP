@@ -6,10 +6,28 @@ function handleSubmit(event) {
     let formText = document.getElementById('name').value
     Client.checkForName(formText)
     console.log("::: Form Submitted :::")
-    fetch('https://api.meaningcloud.com/sentiment-2.1')
+    fetch('http://localhost:8080/test')
     .then(res => res.json())
     .then(function(res) {
         document.getElementById('results').innerHTML = res.message
     })
+
+    app.get('/all', sendData);
+
+
+//   GET
+  function sendData(req, res){
+      res.send(projectData);
+  }
+
+    app.post('/add', data);
+    function data(req, res){
+      // console.log(res.body);
+        newEntry = {
+          name: req.body.name
+        }
+    projectData = newEntry;
+  }
+
   }   
   export { handleSubmit }
