@@ -47,7 +47,7 @@ function performAction(e){
    getFeelings(baseURL, apiKey, urlInput, lang)
     .then(function(data){
         console.log(data);
-        postData('http://localhost:8081/add', {
+        postData('http://localhost:8080/add', {
             name: req.body.name
    }) .then(function() {
     updateUI()
@@ -71,7 +71,7 @@ function performAction(e){
 
   // Update the UI
   const updateUI = async () => {
-    const request = await fetch('http://localhost:8081/all');
+    const request = await fetch('http://localhost:8080/all');
     try{
       const allData = await request.json();
       document.getElementById('results').innerHTML = `Date - ${allData.latitude}`;
